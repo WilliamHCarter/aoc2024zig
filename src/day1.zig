@@ -41,7 +41,7 @@ pub fn readInput(galloc: std.mem.Allocator) ![2][]u32 {
     var arena = std.heap.ArenaAllocator.init(galloc);
     defer arena.deinit();
 
-    const file: std.fs.File = try std.fs.cwd().openFile("src/day1input.txt", .{});
+    const file: std.fs.File = try std.fs.cwd().openFile("data/day1.txt", .{});
     defer file.close();
 
     var first_numbers = std.ArrayList(u32).init(arena.allocator());
@@ -55,7 +55,7 @@ pub fn readInput(galloc: std.mem.Allocator) ![2][]u32 {
     // Read file line by line
     while (try reader.readUntilDelimiterOrEof(&buf, '\n')) |line| {
         // Split the line by whitespace
-        var iterator = std.mem.split(u8, line, "   ");
+        var iterator = std.mem.splitSequence(u8, line, "   ");
         // Parse first number
         const first = iterator.next() orelse continue;
 

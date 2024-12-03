@@ -1,3 +1,5 @@
 .zig-cache/
 zig-out/
 .DS_Store
+zig-windows-x86_64*/**
+data/*.txt
